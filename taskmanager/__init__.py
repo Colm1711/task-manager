@@ -16,8 +16,8 @@ if os.environ.get("DEVELOPMENT") == "True":
 else:
     uri = os.environ.get("DATABASE_URL")
     if uri.startswith("postgres://"):
-        uri = uri.replace("postgres://", "postgresql://")
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+        uri = uri.replace("postgres://", "postgresql://", 1)
+    app.config["SQLALCHEMY_DATABASE_URI"] = uri  # heroku
 
 # create instance of the SQLAlchemy class and pass it the instance of the flask app
 db = SQLAlchemy(app)
